@@ -1,13 +1,13 @@
 //
-//  AuthHeaderView.swift
+//  ForgotPasswordCustomTextField.swift
 //  registrationOnUIKit
 //
-//  Created by Егорио on 03.10.2024.
+//  Created by Егорио on 05.10.2024.
 //
 
 import UIKit
 
-class AuthHeaderView: UIView {
+class ForgotPasswordCustomTextField: UITextField {
 
     /*
     // Only override draw() if you perform custom drawing.
