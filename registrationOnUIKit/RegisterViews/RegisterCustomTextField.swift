@@ -7,14 +7,58 @@
 
 import UIKit
 
-class RegisterCustomTextField: UIView {
+class RegisterCustomTextField: UITextField {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    enum customTextFieldType {
+        case email
+        case password
+        case repeatPassword
     }
-    */
-
+    
+    private let authFieldType: customTextFieldType
+    
+    init(FieldType: customTextFieldType) {
+        self.authFieldType = FieldType
+        super.init(frame: .zero)
+        
+        self.backgroundColor = .secondarySystemBackground
+        self.layer.cornerRadius = 10
+        
+        self.returnKeyType = .done
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
+        
+        // Добавляем padding для текста
+        setPadding(left: 12, right: 12)
+        
+        // Устанавливаем placeholder в зависимости от типа поля
+        setupPlaceholder(for: FieldType)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Функция для установки padding
+    private func setPadding(left: Int, right: Int) {
+        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: left, height: 0))
+        self.leftView = leftPaddingView
+        self.leftViewMode = .always
+        
+        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: right, height: 0))
+        self.rightView = rightPaddingView
+        self.rightViewMode = .always
+    }
+    
+    // Функция для установки placeholder
+    private func setupPlaceholder(for type: customTextFieldType) {
+        switch type {
+        case .email:
+            self.placeholder = "Введите email"
+        case .password:
+            self.placeholder = "Введите пароль"
+        case .repeatPassword:
+            self.placeholder = "Повторите пароль"
+        }
+    }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTextField: UITextField {
+class LoginCustomTextField: UITextField {
 
     enum customTextFieldType {
         case email
